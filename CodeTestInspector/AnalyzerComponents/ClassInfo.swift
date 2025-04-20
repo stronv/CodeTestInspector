@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct ClassInfo {
+    let name: String
+    let type: MVVMComponent
+    let dependencies: [String] // имена других классов
+    let filePath: String
+    let codeLines: [String]
+}
