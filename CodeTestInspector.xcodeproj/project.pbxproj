@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C4B011D2DC087DD00D2BCD2 /* TestabilityMetricsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B011C2DC087DD00D2BCD2 /* TestabilityMetricsCalculator.swift */; };
+		7C4B011F2DC0885000D2BCD2 /* TestabilityAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B011E2DC0885000D2BCD2 /* TestabilityAnalyzer.swift */; };
 		7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */; };
 		7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F62DB50C680097E3C6 /* ContentView.swift */; };
 		7CF2E4F92DB50C6A0097E3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */; };
@@ -31,9 +33,14 @@
 		7CF2E5522DB51B710097E3C6 /* Violation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5512DB51B710097E3C6 /* Violation.swift */; };
 		7CF2E5552DB51C5D0097E3C6 /* ViolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5542DB51C5D0097E3C6 /* ViolationView.swift */; };
 		7CF2E5572DB51FFF0097E3C6 /* ClassInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5562DB51FFF0097E3C6 /* ClassInfo.swift */; };
+		7CF2E55A2DB57B880097E3C6 /* ArchitectureRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5592DB57B880097E3C6 /* ArchitectureRules.swift */; };
+		7CF2E55C2DB57B960097E3C6 /* ComponentRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E55B2DB57B960097E3C6 /* ComponentRule.swift */; };
+		7CF2E55E2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E55D2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C4B011C2DC087DD00D2BCD2 /* TestabilityMetricsCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestabilityMetricsCalculator.swift; sourceTree = "<group>"; };
+		7C4B011E2DC0885000D2BCD2 /* TestabilityAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestabilityAnalyzer.swift; sourceTree = "<group>"; };
 		7CF2E4F12DB50C680097E3C6 /* CodeTestInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTestInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTestInspectorApp.swift; sourceTree = "<group>"; };
 		7CF2E4F62DB50C680097E3C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +56,9 @@
 		7CF2E5512DB51B710097E3C6 /* Violation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Violation.swift; sourceTree = "<group>"; };
 		7CF2E5542DB51C5D0097E3C6 /* ViolationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationView.swift; sourceTree = "<group>"; };
 		7CF2E5562DB51FFF0097E3C6 /* ClassInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassInfo.swift; sourceTree = "<group>"; };
+		7CF2E5592DB57B880097E3C6 /* ArchitectureRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureRules.swift; sourceTree = "<group>"; };
+		7CF2E55B2DB57B960097E3C6 /* ComponentRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentRule.swift; sourceTree = "<group>"; };
+		7CF2E55D2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureRuleEditorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C4B011B2DC087C500D2BCD2 /* MetricsCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				7C4B011C2DC087DD00D2BCD2 /* TestabilityMetricsCalculator.swift */,
+				7C4B011E2DC0885000D2BCD2 /* TestabilityAnalyzer.swift */,
+			);
+			path = MetricsCalculator;
+			sourceTree = "<group>";
+		};
 		7CF2E4E82DB50C680097E3C6 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +111,7 @@
 		7CF2E4F32DB50C680097E3C6 /* CodeTestInspector */ = {
 			isa = PBXGroup;
 			children = (
+				7C4B011B2DC087C500D2BCD2 /* MetricsCalculator */,
 				7CF2E5302DB519370097E3C6 /* CommonComponents */,
 				7CF2E52B2DB518D40097E3C6 /* AnalyzerComponents */,
 				7CF2E52A2DB5155F0097E3C6 /* Analyzer */,
@@ -123,10 +143,9 @@
 		7CF2E52B2DB518D40097E3C6 /* AnalyzerComponents */ = {
 			isa = PBXGroup;
 			children = (
+				7CF2E5582DB57B640097E3C6 /* Models */,
 				7CF2E5532DB51C530097E3C6 /* Views */,
 				7CF2E52C2DB519140097E3C6 /* ArchitectureAnalyzer.swift */,
-				7CF2E5512DB51B710097E3C6 /* Violation.swift */,
-				7CF2E5562DB51FFF0097E3C6 /* ClassInfo.swift */,
 			);
 			path = AnalyzerComponents;
 			sourceTree = "<group>";
@@ -146,8 +165,20 @@
 			isa = PBXGroup;
 			children = (
 				7CF2E5542DB51C5D0097E3C6 /* ViolationView.swift */,
+				7CF2E55D2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7CF2E5582DB57B640097E3C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7CF2E5512DB51B710097E3C6 /* Violation.swift */,
+				7CF2E5562DB51FFF0097E3C6 /* ClassInfo.swift */,
+				7CF2E5592DB57B880097E3C6 /* ArchitectureRules.swift */,
+				7CF2E55B2DB57B960097E3C6 /* ComponentRule.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,14 +269,19 @@
 			files = (
 				7CF2E5322DB5194F0097E3C6 /* DependencyGraph.swift in Sources */,
 				7CF2E5572DB51FFF0097E3C6 /* ClassInfo.swift in Sources */,
+				7CF2E55C2DB57B960097E3C6 /* ComponentRule.swift in Sources */,
 				7CF2E5342DB519770097E3C6 /* TarjanSCC.swift in Sources */,
 				7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */,
+				7CF2E55A2DB57B880097E3C6 /* ArchitectureRules.swift in Sources */,
 				7CF2E5042DB511EA0097E3C6 /* Analyzer.swift in Sources */,
 				7CF2E5362DB519A40097E3C6 /* CodeParser.swift in Sources */,
+				7C4B011F2DC0885000D2BCD2 /* TestabilityAnalyzer.swift in Sources */,
 				7CF2E5522DB51B710097E3C6 /* Violation.swift in Sources */,
 				7CF2E5552DB51C5D0097E3C6 /* ViolationView.swift in Sources */,
+				7CF2E55E2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift in Sources */,
 				7CF2E52D2DB519140097E3C6 /* ArchitectureAnalyzer.swift in Sources */,
 				7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */,
+				7C4B011D2DC087DD00D2BCD2 /* TestabilityMetricsCalculator.swift in Sources */,
 				7CF2E5382DB519DD0097E3C6 /* CodeVisitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

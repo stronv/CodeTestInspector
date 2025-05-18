@@ -13,6 +13,31 @@ struct ContentView: View {
     @State private var analysisResult: String = ""
     @State private var selectedAnalysis: AnalysisType = .testability
     @State private var architectureViolations: [Violation] = []
+    @State private var isAnalyzing = false
+    @State private var isRuleEditorDirty: Bool = false
+    
+    @State private var architectureJSON: String = """
+    {
+      "name": "Custom MVVM",
+      "rules": [
+        { "component": "View", "allowedDependencies": ["ViewModel"] },
+        { "component": "ViewModel", "allowedDependencies": ["Model"] },
+        { "component": "Model", "allowedDependencies": [] }
+      ]
+    }
+    """
+
+    @State private var parsedRules = ArchitectureRules(name: "Custom MVVM", rules: [])
+    @State private var parsingError: String? = nil
+    
+    private let orderedMetricKeys = [
+        "Total Classes",
+        "Total Dependencies",
+        "Coupling",
+        "Cohesion",
+        "Cyclomatic Complexity",
+        "Maintainability Index"
+    ]
 
     enum AnalysisType: String, CaseIterable, Identifiable {
         case testability = "Testability"
@@ -42,18 +67,43 @@ struct ContentView: View {
                 }
             }
 
-            Button("Анализировать") {
+            Button("🔍 Анализировать") {
                 runSelectedAnalysis()
             }
-            .disabled(folderPath.isEmpty)
+            .disabled(folderPath.isEmpty || isAnalyzing)
 
             Divider()
+            
+            if selectedAnalysis == .architecture {
+                ArchitectureRuleEditorView(
+                    jsonText: $architectureJSON,
+                    parsedRules: $parsedRules,
+                    errorMessage: $parsingError,
+                    isDirty: $isRuleEditorDirty
+                )
+            }
+            
+            if isAnalyzing {
+                ProgressView("Анализируем...")
+                    .padding()
+            }
 
             ScrollView {
                 if selectedAnalysis == .testability {
-                    Text(analysisResult)
-                        .font(.system(.body, design: .monospaced))
-                        .padding()
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(orderedMetricKeys, id: \.self) { key in
+                            if let value = extractValue(for: key, from: analysisResult) {
+                                HStack {
+                                    Text("\(key):")
+                                        .bold()
+                                    Spacer()
+                                    Text(value)
+                                }
+                            }
+                        }
+                    }
+                    .padding()
+
                 } else {
                     if architectureViolations.isEmpty {
                         Text("✅ No MVVM violations found.")
@@ -90,20 +140,73 @@ struct ContentView: View {
     }
 
     private func runSelectedAnalysis() {
-        switch selectedAnalysis {
-        case .testability:
-            analysisResult = Analyzer.analyze(projectPath: folderPath)
-            architectureViolations = []
-        case .architecture:
-            do {
-                let analyzer = ArchitectureAnalyzer(directoryURL: URL(fileURLWithPath: folderPath))
-                let violations = try analyzer.analyze()
-                architectureViolations = violations
-                analysisResult = ""
-            } catch {
-                analysisResult = "❌ Ошибка анализа архитектуры: \(error)"
-                architectureViolations = []
+        isAnalyzing = true
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            switch selectedAnalysis {
+            case .testability:
+                do {
+                    let graph = try TestabilityAnalyzer.analyze(projectPath: folderPath)
+                    let metricsCalculator = TestabilityMetricsCalculator(graph: graph)
+                    let metrics = metricsCalculator.calculateMetrics()
+
+                    DispatchQueue.main.async {
+                        self.analysisResult = metrics.map { "\($0.key): \($0.value)" }.joined(separator: "\n")
+                        self.architectureViolations = []
+                        self.isAnalyzing = false
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.analysisResult = "❌ Ошибка анализа тестируемости: \(error)"
+                        self.architectureViolations = []
+                        self.isAnalyzing = false
+                    }
+                }
+
+            case .architecture:
+                do {
+                    let analyzer = ArchitectureAnalyzer(
+                        directoryURL: URL(fileURLWithPath: folderPath),
+                        rules: parsedRules
+                    )
+                    let violations = try analyzer.analyze()
+                    DispatchQueue.main.async {
+                        self.architectureViolations = violations
+                        self.analysisResult = ""
+                        self.isAnalyzing = false
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.analysisResult = "❌ Ошибка анализа архитектуры: \(error)"
+                        self.architectureViolations = []
+                        self.isAnalyzing = false
+                    }
+                }
             }
         }
     }
+}
+
+private extension ContentView {
+    private func splitMetricLine(_ line: String) -> (String, String)? {
+        let components = line.components(separatedBy: ":")
+        guard components.count >= 2 else { return nil }
+        let key = components[0]
+        let value = components[1...].joined(separator: ":").trimmingCharacters(in: .whitespaces)
+        return (key, value)
+    }
+    private func extractValue(for key: String, from analysisResult: String) -> String? {
+        let lines = analysisResult.components(separatedBy: "\n")
+        for line in lines {
+            if line.starts(with: key + ":") {
+                let components = line.components(separatedBy: ":")
+                if components.count >= 2 {
+                    return components[1...].joined(separator: ":").trimmingCharacters(in: .whitespaces)
+                }
+            }
+        }
+        return nil
+    }
+
+
 }

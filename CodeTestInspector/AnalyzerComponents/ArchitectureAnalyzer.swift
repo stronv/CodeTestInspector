@@ -8,17 +8,7 @@
 import Foundation
 
 protocol IComponentIdentifier: AnyObject {
-    func identifyComponentType(for className: String) -> MVVMComponent
-}
-
-
-// MARK: - Architecture Component Type
-
-enum MVVMComponent {
-    case model
-    case view
-    case viewModel
-    case unknown
+    func identifyComponentType(for className: String) -> String
 }
 
 // MARK: - ArchitectureAnalyzer
@@ -27,41 +17,70 @@ final class ArchitectureAnalyzer: IComponentIdentifier {
     let directoryURL: URL
     let graph = DependencyGraph()
     let parser = CodeParser()
+    let rules: ArchitectureRules
     
-    init(directoryURL: URL) {
+    init(directoryURL: URL, rules: ArchitectureRules) {
         self.directoryURL = directoryURL
+        self.rules = rules
     }
     
     func analyze() throws -> [Violation] {
-        let swiftFiles = try collectSwiftFiles(in: directoryURL)
+        graph.adjacencyList.removeAll()
 
+        let swiftFiles = try collectSwiftFiles(in: directoryURL)
         var sourceFiles: [String: String] = [:]
+        var classToFile: [String: String] = [:]
 
         for file in swiftFiles {
             do {
                 let source = try String(contentsOf: file)
+                sourceFiles[file.path] = source
+
+                if let declaredClass = extractTopLevelClassName(from: source) {
+                    classToFile[declaredClass] = file.path
+                }
+
                 let partialGraph = try parser.buildDependencyGraph(from: source)
                 mergeGraphs(from: partialGraph)
-                sourceFiles[file.path] = source
+
             } catch {
                 print("⚠️ Failed to parse: \(file.lastPathComponent): \(error)")
             }
         }
 
-        return checkForMVVMViolations(sourceFiles: sourceFiles)
+        return checkForViolations(sourceFiles: sourceFiles, classToFile: classToFile)
     }
+
     
     // MARK: - IComponentIdentifier
     
-    func identifyComponentType(for className: String) -> MVVMComponent {
-        if className.lowercased().contains("viewmodel") {
-            return .viewModel
-        } else if className.lowercased().contains("view") {
-            return .view
-        } else if className.lowercased().contains("model") {
-            return .model
+    func identifyComponentType(for className: String) -> String {
+        let lowercased = className.lowercased()
+
+        if lowercased.contains("viewmodel") {
+            return "ViewModel"
+        } else if lowercased.contains("view") {
+            return "View"
+        } else if lowercased.contains("model") {
+            return "Model"
+        } else {
+            return "Unknown"
         }
-        return .unknown
+    }
+    
+    func extractTopLevelClassName(from source: String) -> String? {
+        let lines = source.components(separatedBy: .newlines)
+        for line in lines {
+            let trimmed = line.trimmingCharacters(in: .whitespaces)
+            if trimmed.hasPrefix("final class") || trimmed.hasPrefix("class ") {
+                let components = trimmed.components(separatedBy: .whitespaces)
+                if let classIndex = components.firstIndex(where: { $0 == "class" }),
+                   classIndex + 1 < components.count {
+                    return components[classIndex + 1]
+                }
+            }
+        }
+        return nil
     }
 }
 
@@ -91,64 +110,61 @@ private extension ArchitectureAnalyzer {
         }
     }
     
-    func checkForMVVMViolations(sourceFiles: [String: String]) -> [Violation] {
+    func checkForViolations(
+        sourceFiles: [String: String],
+        classToFile: [String: String]
+    ) -> [Violation] {
         var violations: [Violation] = []
         var seenViolations = Set<String>()
 
         for (origin, targets) in graph.adjacencyList {
             let originType = identifyComponentType(for: origin)
 
+            guard let originRule = rules.rules.first(where: { $0.component == originType }) else {
+                continue
+            }
+
             for target in targets {
                 let targetType = identifyComponentType(for: target)
                 let key = "\(origin)->\(target)"
 
-                if (originType == .viewModel && targetType == .view) ||
-                    (originType == .view && targetType == .model),
-                    !seenViolations.contains(key) {
+                if !originRule.allowedDependencies.contains(targetType),
+                   !seenViolations.contains(key) {
 
                     seenViolations.insert(key)
 
-                    if let (filePath, source) = sourceFiles.first(where: { $0.value.contains(origin) }) {
-                        let lines = source.components(separatedBy: .newlines)
-                        let matchLineIndex = lines.firstIndex(where: { $0.contains(origin) && $0.contains(target) }) ??
-                                             lines.firstIndex(where: { $0.contains(origin) }) ??
-                                             0
+                    let filePath = classToFile[origin] ?? "?"
+                    let source = sourceFiles[filePath] ?? ""
+                    let (snippet, line) = extractSnippet(from: source, for: target)
 
-                        let contextRange = max(0, matchLineIndex - 2)...min(lines.count - 1, matchLineIndex + 2)
-                        let snippet = lines[contextRange].joined(separator: "\n")
-
-                        let recommendation = originType == .viewModel
-                            ? RecomendationForMVVM.vmRecomendation
-                            : RecomendationForMVVM.viewRecomendation
-
-                        violations.append(
-                            Violation(
-                                className: origin,
-                                issue: "\(origin) зависит от \(target)",
-                                recommendation: recommendation,
-                                filePath: filePath,
-                                codeSnippet: snippet,
-                                lineNumber: matchLineIndex + 1
-                            )
+                    violations.append(
+                        Violation(
+                            className: origin,
+                            issue: "\(originType) '\(origin)' зависит от \(targetType) '\(target)', что нарушает архитектуру '\(rules.name)'",
+                            recommendation: "\(originType) не должен напрямую зависеть от \(targetType) по правилам '\(rules.name)'.",
+                            filePath: filePath,
+                            codeSnippet: snippet,
+                            lineNumber: line
                         )
-                    } else {
-                        violations.append(
-                            Violation(
-                                className: origin,
-                                issue: "\(origin) зависит от \(target)",
-                                recommendation: originType == .viewModel
-                                    ? RecomendationForMVVM.vmRecomendation
-                                    : RecomendationForMVVM.viewRecomendation,
-                                filePath: "Неизвестно",
-                                codeSnippet: "// Не удалось найти фрагмент",
-                                lineNumber: 0
-                            )
-                        )
-                    }
+                    )
                 }
             }
         }
+
         return violations
+    }
+    
+    func extractSnippet(from source: String, for className: String, context: Int = 2) -> (String, Int) {
+        let lines = source.components(separatedBy: .newlines)
+
+        if let index = lines.firstIndex(where: { $0.contains(className) }) {
+            let start = max(0, index - context)
+            let end = min(lines.count - 1, index + context)
+            let snippet = lines[start...end].joined(separator: "\n")
+            return (snippet, index + 1)
+        }
+
+        return ("// Не удалось найти фрагмент с \(className)", 0)
     }
 }
 

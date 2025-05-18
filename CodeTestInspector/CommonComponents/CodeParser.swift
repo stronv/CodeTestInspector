@@ -28,27 +28,17 @@ extension CodeParser {
         let visitor = try extractVisitor(from: source)
         let graph = DependencyGraph()
 
-        for methodCall in visitor.methodCalls {
-            let originClass = extractClassName(from: methodCall.origin)
-            let targetClass = extractClassName(from: methodCall.target)
+        for (origin, target) in visitor.dependencies {
+            let originClass = extractClassName(from: origin)
+            let targetClass = extractClassName(from: target)
 
             guard !excludedTypes.contains(targetClass) else { continue }
 
             graph.addDependency(from: originClass, to: targetClass)
         }
 
-        for propertyAccess in visitor.propertyAccesses {
-            let originClass = extractClassName(from: propertyAccess.origin)
-            let targetClass = extractClassName(from: propertyAccess.target)
-
-            guard !excludedTypes.contains(targetClass) else { continue }
-
-            graph.addDependency(from: originClass, to: targetClass)
-        }
-
-        // Обеспечиваем наличие всех узлов даже без зависимостей
-        for node in visitor.methodCalls.map(\.origin) + visitor.methodCalls.map(\.target) +
-                    visitor.propertyAccesses.map(\.origin) + visitor.propertyAccesses.map(\.target) {
+        let allNodes = visitor.dependencies.flatMap { [$0.origin, $0.target] }
+        for node in allNodes {
             let name = extractClassName(from: node)
             guard !excludedTypes.contains(name) else { continue }
             _ = graph.adjacencyList[name, default: []]
@@ -56,8 +46,7 @@ extension CodeParser {
 
         return graph
     }
-    
-    /// Извлекает информацию из исходного кода с использованием `CodeVisitor`.
+
     func extractVisitor(from source: String) throws -> CodeVisitor {
         let sourceFile = Parser.parse(source: source)
         let visitor = CodeVisitor(viewMode: .sourceAccurate)
@@ -71,7 +60,7 @@ private extension CodeParser {
         return identifier
             .replacingOccurrences(of: "?", with: "")
             .replacingOccurrences(of: "!", with: "")
-            .replacingOccurrences(of: "()", with: "") // Remove initializer calls
+            .replacingOccurrences(of: "()", with: "")
             .components(separatedBy: ".").first ?? identifier
     }
 }
@@ -107,7 +96,7 @@ extension DependencyGraph {
     }
 }
 
-// Move to another place
+// TODO: Move to another place
 
 struct DependencyGraphJSON: Codable {
     struct Node: Codable {
@@ -129,7 +118,7 @@ func generateJSON(for graph: DependencyGraph) -> String {
     var edges: [DependencyGraphJSON.Edge] = []
     
     for (node, targets) in graph.adjacencyList {
-        nodes.append(DependencyGraphJSON.Node(id: node, type: "class")) // Предполагаем, что все это классы
+        nodes.append(DependencyGraphJSON.Node(id: node, type: "class"))
         for target in targets {
             edges.append(DependencyGraphJSON.Edge(source: node, target: target))
         }
@@ -137,12 +126,11 @@ func generateJSON(for graph: DependencyGraph) -> String {
     
     let jsonGraph = DependencyGraphJSON(nodes: nodes, edges: edges)
     
-    // Сериализуем в JSON
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted // Для красивого вывода
     if let jsonData = try? encoder.encode(jsonGraph), let jsonString = String(data: jsonData, encoding: .utf8) {
         return jsonString
     }
     
-    return "{}" // Возвращаем пустой JSON в случае ошибки
+    return "{}"
 }

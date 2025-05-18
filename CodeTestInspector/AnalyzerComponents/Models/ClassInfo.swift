@@ -9,8 +9,8 @@ import Foundation
 
 struct ClassInfo {
     let name: String
-    let type: MVVMComponent
-    let dependencies: [String] // имена других классов
+    let type: String
+    let dependencies: [String]
     let filePath: String
     let codeLines: [String]
 }
