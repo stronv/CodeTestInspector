@@ -12,17 +12,25 @@ struct ArchitectureAnalyzerScreen: View {
     @ObservedObject var viewModel: ArchitectureAnalyzerViewModel
 
     var body: some View {
-        HStack(spacing: 0) {
-            RuleEditorView(viewModel: viewModel)
-                .frame(minWidth: 350)
-                .padding()
-                .background(Color(.windowBackgroundColor))
+        ZStack {
+            Color(.controlBackgroundColor)
+                .ignoresSafeArea(.all)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20, content: {
+                    RulesSection(ruleManager: viewModel.ruleManager)
 
-            Divider()
+                    Divider()
 
-            ArchitectureAnalyzerView(viewModel: viewModel)
-                .frame(minWidth: 350)
-                .padding()
+                    PathAndAnalyzeSection(viewModel: viewModel)
+                    
+                    Divider()
+                    
+                    ViolationsSection(viewModel: viewModel)
+                    
+                    Spacer()
+                })
+                .padding(20)
+            }
         }
     }
 }

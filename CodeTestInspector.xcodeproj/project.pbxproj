@@ -25,6 +25,8 @@
 		7C4021F92DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021F82DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift */; };
 		7C4021FB2DE7926500A9D013 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FA2DE7926500A9D013 /* AppDependencies.swift */; };
 		7C4021FD2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */; };
+		7C4021FF2DEC765200A9D013 /* ViolationsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FE2DEC765200A9D013 /* ViolationsSection.swift */; };
+		7C4022012DEC776100A9D013 /* ViolationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4022002DEC776100A9D013 /* ViolationRowView.swift */; };
 		7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */; };
 		7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F62DB50C680097E3C6 /* ContentView.swift */; };
 		7CF2E4F92DB50C6A0097E3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		7C4021F82DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalyzerViewModel.swift; sourceTree = "<group>"; };
 		7C4021FA2DE7926500A9D013 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalyzerScreen.swift; sourceTree = "<group>"; };
+		7C4021FE2DEC765200A9D013 /* ViolationsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationsSection.swift; sourceTree = "<group>"; };
+		7C4022002DEC776100A9D013 /* ViolationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationRowView.swift; sourceTree = "<group>"; };
 		7CF2E4F12DB50C680097E3C6 /* CodeTestInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTestInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTestInspectorApp.swift; sourceTree = "<group>"; };
 		7CF2E4F62DB50C680097E3C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 			children = (
 				7C4021EE2DE42E5F00A9D013 /* RuleEditorView.swift */,
 				7C4021F02DE78BA300A9D013 /* ArchitectureAnalyzerView.swift */,
+				7C4021FE2DEC765200A9D013 /* ViolationsSection.swift */,
+				7C4022002DEC776100A9D013 /* ViolationRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C4021D52DE33EA500A9D013 /* ProjectScanner.swift in Sources */,
+				7C4022012DEC776100A9D013 /* ViolationRowView.swift in Sources */,
 				7C4021F52DE7901A00A9D013 /* ArchitectureAnalysisService.swift in Sources */,
 				7C4021EF2DE42E5F00A9D013 /* RuleEditorView.swift in Sources */,
 				7C4021DA2DE33FE800A9D013 /* EntitySyntaxWalker.swift in Sources */,
@@ -294,6 +301,7 @@
 				7C4021F12DE78BA300A9D013 /* ArchitectureAnalyzerView.swift in Sources */,
 				7C4021D82DE33F8F00A9D013 /* ParsedEntity.swift in Sources */,
 				7C4021E32DE3472E00A9D013 /* UserView.swift in Sources */,
+				7C4021FF2DEC765200A9D013 /* ViolationsSection.swift in Sources */,
 				7C4021FB2DE7926500A9D013 /* AppDependencies.swift in Sources */,
 				7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */,
 				7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */,

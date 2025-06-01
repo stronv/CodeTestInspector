@@ -23,9 +23,7 @@ final class RuleManager: ObservableObject {
         }
         
         parsedRules = result
-    }
-    
-    func isAllowed(from: String, to: String) -> Bool {
-        parsedRules.contains(DependencyRule(from: from.lowercased(), to: to.lowercased()))
+        
+        print(parsedRules)
     }
 }

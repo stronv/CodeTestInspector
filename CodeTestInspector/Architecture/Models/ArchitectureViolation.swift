@@ -7,10 +7,13 @@
 
 import Foundation
 
-struct ArchitectureViolation {
+struct ArchitectureViolation: Identifiable {
+    let id = UUID()
     let fromClass: String
     let fromComponent: String
     let toClass: String
     let toComponent: String
     let filePath: String
+    let lineNumber: Int?
+    let snippetLines: [(Int, String)]
 }

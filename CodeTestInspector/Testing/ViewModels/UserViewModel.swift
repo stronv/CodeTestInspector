@@ -12,4 +12,8 @@ class UserViewModel {
     init(user: User) {
         self.user = user
     }
+    func test() {
+        let view = UserView()
+        print(view)
+    }
 }

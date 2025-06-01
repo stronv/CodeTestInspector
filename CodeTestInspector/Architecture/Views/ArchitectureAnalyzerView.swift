@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-struct ArchitectureAnalyzerView: View {
+struct PathAndAnalyzeSection: View {
     @ObservedObject var viewModel: ArchitectureAnalyzerViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Button("Выбрать проект") {
+        VStack(alignment: .leading, spacing: 8) {
+            Button("Обзор…") {
                 let panel = NSOpenPanel()
                 panel.canChooseDirectories = true
                 panel.canChooseFiles = false
@@ -22,36 +22,26 @@ struct ArchitectureAnalyzerView: View {
                     viewModel.selectedPath = url
                 }
             }
+            .buttonStyle(.bordered) // более компактная кнопка
 
             if let path = viewModel.selectedPath {
-                Text("📂 Путь к проекту: \(path.path)")
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                HStack(spacing: 4) {
+                    Image(systemName: "folder")
+                        .foregroundColor(.gray)
+                    Text(path.path)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                }
+                // Чтобы строка не была слишком длинной, можно обрезать по середине
             }
 
-            Button("Анализировать") {
+            Button("🔍 Анализировать") {
                 viewModel.analyze()
             }
-            .disabled(viewModel.parsedRules.isEmpty || viewModel.selectedPath == nil)
-
-            if viewModel.violations.isEmpty && viewModel.selectedPath != nil {
-                Text("✅ Нарушений не найдено")
-                    .foregroundColor(.green)
-                    .font(.caption)
-            } else if !viewModel.violations.isEmpty {
-                Divider()
-                Text("🚫 Нарушения:")
-                    .font(.subheadline)
-                    .bold()
-                ForEach(viewModel.violations, id: \.fromClass) { v in
-                    Text("\(v.fromClass) (\(v.fromComponent)) → \(v.toClass) (\(v.toComponent))")
-                        .foregroundColor(.red)
-                        .font(.caption)
-                }
-            }
-
-            Spacer()
+            .buttonStyle(.borderedProminent)
+            .disabled(viewModel.ruleManager.parsedRules.isEmpty || viewModel.selectedPath == nil)
         }
-        .padding()
     }
 }

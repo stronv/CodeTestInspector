@@ -7,37 +7,46 @@
 
 import SwiftUI
 
-struct RuleEditorView: View {
-    @ObservedObject var viewModel: ArchitectureAnalyzerViewModel
+struct RulesSection: View {
+    @ObservedObject var ruleManager: RuleManager
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Введите правила зависимостей (формат: A - B):")
                 .font(.headline)
-
-            TextEditor(text: $viewModel.ruleManager.rawRules)
-                .font(.system(.body, design: .monospaced))
-                .frame(minHeight: 200)
-                .border(Color.gray)
-
-            Button("Применить правила") {
-                viewModel.ruleManager.parseRules()
+            
+            // Белый фон для редактора, рамка
+            ZStack {
+                Color.white
+                TextEditor(text: $ruleManager.rawRules)
+                    .font(.system(.body, design: .monospaced))
+                    .padding(4)
             }
-            .buttonStyle(.borderedProminent)
+            .frame(minHeight: 200)
+            .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.gray))
 
-            if !viewModel.ruleManager.parsedRules.isEmpty {
+            HStack {
+                Button("Применить правила") {
+                    ruleManager.parseRules()
+                    print("Array - \(Array(ruleManager.parsedRules))")
+                }
+                .buttonStyle(.borderedProminent)
+
+                // По желанию: при провальной валидации показываем Alert — дальше
+            }
+
+            if !ruleManager.parsedRules.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("✅ Разобранные правила:")
                         .font(.subheadline)
                         .bold()
-                    ForEach(Array(viewModel.ruleManager.parsedRules), id: \.self) { rule in
+                    ForEach(Array(ruleManager.parsedRules), id: \.self) { rule in
                         Text("\(rule.from.capitalized) → \(rule.to.capitalized)")
                             .font(.caption)
                     }
                 }
+                .padding(.top, 4)
             }
-            Spacer()
         }
-        .padding()
     }
 }
