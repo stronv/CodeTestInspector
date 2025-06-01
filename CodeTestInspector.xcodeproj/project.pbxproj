@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C4021D02DE3361F00A9D013 /* SwiftParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7C4021CF2DE3361F00A9D013 /* SwiftParser */; };
+		7C4021D22DE3361F00A9D013 /* SwiftSyntax in Frameworks */ = {isa = PBXBuildFile; productRef = 7C4021D12DE3361F00A9D013 /* SwiftSyntax */; };
+		7C4021D52DE33EA500A9D013 /* ProjectScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021D42DE33EA500A9D013 /* ProjectScanner.swift */; };
+		7C4021D82DE33F8F00A9D013 /* ParsedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021D72DE33F8F00A9D013 /* ParsedEntity.swift */; };
+		7C4021DA2DE33FE800A9D013 /* EntitySyntaxWalker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021D92DE33FE800A9D013 /* EntitySyntaxWalker.swift */; };
+		7C4021DC2DE3419300A9D013 /* AnalyzerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021DB2DE3419300A9D013 /* AnalyzerEngine.swift */; };
+		7C4021E02DE3471B00A9D013 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021DF2DE3471B00A9D013 /* User.swift */; };
+		7C4021E32DE3472E00A9D013 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021E22DE3472E00A9D013 /* UserView.swift */; };
+		7C4021E62DE3474100A9D013 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021E52DE3474100A9D013 /* UserViewModel.swift */; };
+		7C4021EA2DE42CBC00A9D013 /* DependencyRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021E92DE42CBC00A9D013 /* DependencyRule.swift */; };
+		7C4021EC2DE42CF300A9D013 /* RuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021EB2DE42CF300A9D013 /* RuleManager.swift */; };
+		7C4021EF2DE42E5F00A9D013 /* RuleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021EE2DE42E5F00A9D013 /* RuleEditorView.swift */; };
+		7C4021F12DE78BA300A9D013 /* ArchitectureAnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021F02DE78BA300A9D013 /* ArchitectureAnalyzerView.swift */; };
+		7C4021F32DE78E1C00A9D013 /* ArchitectureViolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021F22DE78E1C00A9D013 /* ArchitectureViolation.swift */; };
+		7C4021F52DE7901A00A9D013 /* ArchitectureAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021F42DE7901A00A9D013 /* ArchitectureAnalysisService.swift */; };
+		7C4021F92DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021F82DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift */; };
+		7C4021FB2DE7926500A9D013 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FA2DE7926500A9D013 /* AppDependencies.swift */; };
+		7C4021FD2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */; };
 		7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */; };
 		7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F62DB50C680097E3C6 /* ContentView.swift */; };
 		7CF2E4F92DB50C6A0097E3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */; };
@@ -14,6 +32,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C4021D42DE33EA500A9D013 /* ProjectScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectScanner.swift; sourceTree = "<group>"; };
+		7C4021D72DE33F8F00A9D013 /* ParsedEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsedEntity.swift; sourceTree = "<group>"; };
+		7C4021D92DE33FE800A9D013 /* EntitySyntaxWalker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySyntaxWalker.swift; sourceTree = "<group>"; };
+		7C4021DB2DE3419300A9D013 /* AnalyzerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerEngine.swift; sourceTree = "<group>"; };
+		7C4021DF2DE3471B00A9D013 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7C4021E22DE3472E00A9D013 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		7C4021E52DE3474100A9D013 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		7C4021E92DE42CBC00A9D013 /* DependencyRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRule.swift; sourceTree = "<group>"; };
+		7C4021EB2DE42CF300A9D013 /* RuleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleManager.swift; sourceTree = "<group>"; };
+		7C4021EE2DE42E5F00A9D013 /* RuleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleEditorView.swift; sourceTree = "<group>"; };
+		7C4021F02DE78BA300A9D013 /* ArchitectureAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalyzerView.swift; sourceTree = "<group>"; };
+		7C4021F22DE78E1C00A9D013 /* ArchitectureViolation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureViolation.swift; sourceTree = "<group>"; };
+		7C4021F42DE7901A00A9D013 /* ArchitectureAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalysisService.swift; sourceTree = "<group>"; };
+		7C4021F82DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalyzerViewModel.swift; sourceTree = "<group>"; };
+		7C4021FA2DE7926500A9D013 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalyzerScreen.swift; sourceTree = "<group>"; };
 		7CF2E4F12DB50C680097E3C6 /* CodeTestInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTestInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTestInspectorApp.swift; sourceTree = "<group>"; };
 		7CF2E4F62DB50C680097E3C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,12 +61,114 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C4021D02DE3361F00A9D013 /* SwiftParser in Frameworks */,
+				7C4021D22DE3361F00A9D013 /* SwiftSyntax in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C4021D32DE33E8D00A9D013 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021D62DE33F7D00A9D013 /* Models */,
+				7C4021D42DE33EA500A9D013 /* ProjectScanner.swift */,
+				7C4021D92DE33FE800A9D013 /* EntitySyntaxWalker.swift */,
+				7C4021DB2DE3419300A9D013 /* AnalyzerEngine.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		7C4021D62DE33F7D00A9D013 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021D72DE33F8F00A9D013 /* ParsedEntity.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7C4021DD2DE3470A00A9D013 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021E42DE3473800A9D013 /* ViewModels */,
+				7C4021E12DE3472400A9D013 /* Views */,
+				7C4021DE2DE3471400A9D013 /* Models */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		7C4021DE2DE3471400A9D013 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021DF2DE3471B00A9D013 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7C4021E12DE3472400A9D013 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021E22DE3472E00A9D013 /* UserView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7C4021E42DE3473800A9D013 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021E52DE3474100A9D013 /* UserViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7C4021E72DE4280C00A9D013 /* Architecture */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021F72DE7919100A9D013 /* ViewModel */,
+				7C4021F62DE7918200A9D013 /* Helpers */,
+				7C4021ED2DE42E5500A9D013 /* Views */,
+				7C4021E82DE42CA900A9D013 /* Models */,
+				7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */,
+			);
+			path = Architecture;
+			sourceTree = "<group>";
+		};
+		7C4021E82DE42CA900A9D013 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021E92DE42CBC00A9D013 /* DependencyRule.swift */,
+				7C4021F22DE78E1C00A9D013 /* ArchitectureViolation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7C4021ED2DE42E5500A9D013 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021EE2DE42E5F00A9D013 /* RuleEditorView.swift */,
+				7C4021F02DE78BA300A9D013 /* ArchitectureAnalyzerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7C4021F62DE7918200A9D013 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021EB2DE42CF300A9D013 /* RuleManager.swift */,
+				7C4021F42DE7901A00A9D013 /* ArchitectureAnalysisService.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7C4021F72DE7919100A9D013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021F82DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		7CF2E4E82DB50C680097E3C6 = {
 			isa = PBXGroup;
 			children = (
@@ -52,11 +188,15 @@
 		7CF2E4F32DB50C680097E3C6 /* CodeTestInspector */ = {
 			isa = PBXGroup;
 			children = (
+				7C4021E72DE4280C00A9D013 /* Architecture */,
+				7C4021DD2DE3470A00A9D013 /* Testing */,
+				7C4021D32DE33E8D00A9D013 /* Parser */,
 				7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */,
 				7CF2E4F62DB50C680097E3C6 /* ContentView.swift */,
 				7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */,
 				7CF2E4FD2DB50C6A0097E3C6 /* CodeTestInspector.entitlements */,
 				7CF2E4FA2DB50C6A0097E3C6 /* Preview Content */,
+				7C4021FA2DE7926500A9D013 /* AppDependencies.swift */,
 			);
 			path = CodeTestInspector;
 			sourceTree = "<group>";
@@ -85,6 +225,10 @@
 			dependencies = (
 			);
 			name = CodeTestInspector;
+			packageProductDependencies = (
+				7C4021CF2DE3361F00A9D013 /* SwiftParser */,
+				7C4021D12DE3361F00A9D013 /* SwiftSyntax */,
+			);
 			productName = CodeTestInspector;
 			productReference = 7CF2E4F12DB50C680097E3C6 /* CodeTestInspector.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +257,9 @@
 				Base,
 			);
 			mainGroup = 7CF2E4E82DB50C680097E3C6;
+			packageReferences = (
+				7C4021CE2DE3361F00A9D013 /* XCRemoteSwiftPackageReference "swift-syntax" */,
+			);
 			productRefGroup = 7CF2E4F22DB50C680097E3C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +286,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C4021D52DE33EA500A9D013 /* ProjectScanner.swift in Sources */,
+				7C4021F52DE7901A00A9D013 /* ArchitectureAnalysisService.swift in Sources */,
+				7C4021EF2DE42E5F00A9D013 /* RuleEditorView.swift in Sources */,
+				7C4021DA2DE33FE800A9D013 /* EntitySyntaxWalker.swift in Sources */,
+				7C4021EA2DE42CBC00A9D013 /* DependencyRule.swift in Sources */,
+				7C4021F12DE78BA300A9D013 /* ArchitectureAnalyzerView.swift in Sources */,
+				7C4021D82DE33F8F00A9D013 /* ParsedEntity.swift in Sources */,
+				7C4021E32DE3472E00A9D013 /* UserView.swift in Sources */,
+				7C4021FB2DE7926500A9D013 /* AppDependencies.swift in Sources */,
 				7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */,
 				7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */,
+				7C4021DC2DE3419300A9D013 /* AnalyzerEngine.swift in Sources */,
+				7C4021E62DE3474100A9D013 /* UserViewModel.swift in Sources */,
+				7C4021EC2DE42CF300A9D013 /* RuleManager.swift in Sources */,
+				7C4021F32DE78E1C00A9D013 /* ArchitectureViolation.swift in Sources */,
+				7C4021F92DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift in Sources */,
+				7C4021FD2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift in Sources */,
+				7C4021E02DE3471B00A9D013 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +504,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C4021CE2DE3361F00A9D013 /* XCRemoteSwiftPackageReference "swift-syntax" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-syntax";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 601.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7C4021CF2DE3361F00A9D013 /* SwiftParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C4021CE2DE3361F00A9D013 /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftParser;
+		};
+		7C4021D12DE3361F00A9D013 /* SwiftSyntax */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C4021CE2DE3361F00A9D013 /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftSyntax;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7CF2E4E92DB50C680097E3C6 /* Project object */;
 }

@@ -1,0 +1,16 @@
+//
+//  AppDependencies.swift
+//  CodeTestInspector
+//
+//  Created by Artyom Tabachenko on 28.05.2025.
+//
+
+import Foundation
+import SwiftUI
+
+final class AppDependencies {
+    static func makeArchitectureAnalyzerModule() -> some View {
+        let viewModel = ArchitectureAnalyzerViewModel()
+        return ArchitectureAnalyzerScreen(viewModel: viewModel)
+    }
+}
