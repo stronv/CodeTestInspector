@@ -31,6 +31,29 @@
 		7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F62DB50C680097E3C6 /* ContentView.swift */; };
 		7CF2E4F92DB50C6A0097E3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */; };
 		7CF2E4FC2DB50C6A0097E3C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF2E4FB2DB50C6A0097E3C6 /* Preview Assets.xcassets */; };
+		7CF2E5042DB511EA0097E3C6 /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5032DB511EA0097E3C6 /* Analyzer.swift */; };
+		7CF2E52D2DB519140097E3C6 /* ArchitectureAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E52C2DB519140097E3C6 /* ArchitectureAnalyzer.swift */; };
+		7CF2E5322DB5194F0097E3C6 /* DependencyGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5312DB5194F0097E3C6 /* DependencyGraph.swift */; };
+		7CF2E5342DB519770097E3C6 /* TarjanSCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5332DB519770097E3C6 /* TarjanSCC.swift */; };
+		7CF2E5362DB519A40097E3C6 /* CodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5352DB519A40097E3C6 /* CodeParser.swift */; };
+		7CF2E5382DB519DD0097E3C6 /* CodeVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5372DB519DD0097E3C6 /* CodeVisitor.swift */; };
+		7CF2E53B2DB51A970097E3C6 /* SwiftBasicFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E53A2DB51A970097E3C6 /* SwiftBasicFormat */; };
+		7CF2E53D2DB51A970097E3C6 /* SwiftCompilerPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E53C2DB51A970097E3C6 /* SwiftCompilerPlugin */; };
+		7CF2E53F2DB51A970097E3C6 /* SwiftDiagnostics in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E53E2DB51A970097E3C6 /* SwiftDiagnostics */; };
+		7CF2E5412DB51A970097E3C6 /* SwiftIfConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E5402DB51A970097E3C6 /* SwiftIfConfig */; };
+		7CF2E5432DB51A970097E3C6 /* SwiftLexicalLookup in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E5422DB51A970097E3C6 /* SwiftLexicalLookup */; };
+		7CF2E5452DB51A970097E3C6 /* SwiftOperators in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E5442DB51A970097E3C6 /* SwiftOperators */; };
+		7CF2E5472DB51A970097E3C6 /* SwiftParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E5462DB51A970097E3C6 /* SwiftParser */; };
+		7CF2E5492DB51A970097E3C6 /* SwiftParserDiagnostics in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E5482DB51A970097E3C6 /* SwiftParserDiagnostics */; };
+		7CF2E54B2DB51A970097E3C6 /* SwiftRefactor in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E54A2DB51A970097E3C6 /* SwiftRefactor */; };
+		7CF2E54D2DB51A970097E3C6 /* SwiftSyntax in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E54C2DB51A970097E3C6 /* SwiftSyntax */; };
+		7CF2E54F2DB51A970097E3C6 /* SwiftSyntaxBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF2E54E2DB51A970097E3C6 /* SwiftSyntaxBuilder */; };
+		7CF2E5522DB51B710097E3C6 /* Violation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5512DB51B710097E3C6 /* Violation.swift */; };
+		7CF2E5552DB51C5D0097E3C6 /* ViolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5542DB51C5D0097E3C6 /* ViolationView.swift */; };
+		7CF2E5572DB51FFF0097E3C6 /* ClassInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5562DB51FFF0097E3C6 /* ClassInfo.swift */; };
+		7CF2E55A2DB57B880097E3C6 /* ArchitectureRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E5592DB57B880097E3C6 /* ArchitectureRules.swift */; };
+		7CF2E55C2DB57B960097E3C6 /* ComponentRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E55B2DB57B960097E3C6 /* ComponentRule.swift */; };
+		7CF2E55E2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E55D2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +81,18 @@
 		7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF2E4FB2DB50C6A0097E3C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7CF2E4FD2DB50C6A0097E3C6 /* CodeTestInspector.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CodeTestInspector.entitlements; sourceTree = "<group>"; };
+		7CF2E5032DB511EA0097E3C6 /* Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analyzer.swift; sourceTree = "<group>"; };
+		7CF2E52C2DB519140097E3C6 /* ArchitectureAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalyzer.swift; sourceTree = "<group>"; };
+		7CF2E5312DB5194F0097E3C6 /* DependencyGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyGraph.swift; sourceTree = "<group>"; };
+		7CF2E5332DB519770097E3C6 /* TarjanSCC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TarjanSCC.swift; sourceTree = "<group>"; };
+		7CF2E5352DB519A40097E3C6 /* CodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeParser.swift; sourceTree = "<group>"; };
+		7CF2E5372DB519DD0097E3C6 /* CodeVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVisitor.swift; sourceTree = "<group>"; };
+		7CF2E5512DB51B710097E3C6 /* Violation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Violation.swift; sourceTree = "<group>"; };
+		7CF2E5542DB51C5D0097E3C6 /* ViolationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationView.swift; sourceTree = "<group>"; };
+		7CF2E5562DB51FFF0097E3C6 /* ClassInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassInfo.swift; sourceTree = "<group>"; };
+		7CF2E5592DB57B880097E3C6 /* ArchitectureRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureRules.swift; sourceTree = "<group>"; };
+		7CF2E55B2DB57B960097E3C6 /* ComponentRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentRule.swift; sourceTree = "<group>"; };
+		7CF2E55D2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureRuleEditorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +108,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+
 		7C4021D32DE33E8D00A9D013 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +251,55 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		7CF2E52A2DB5155F0097E3C6 /* Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				7CF2E5032DB511EA0097E3C6 /* Analyzer.swift */,
+			);
+			path = Analyzer;
+			sourceTree = "<group>";
+		};
+		7CF2E52B2DB518D40097E3C6 /* AnalyzerComponents */ = {
+			isa = PBXGroup;
+			children = (
+				7CF2E5582DB57B640097E3C6 /* Models */,
+				7CF2E5532DB51C530097E3C6 /* Views */,
+				7CF2E52C2DB519140097E3C6 /* ArchitectureAnalyzer.swift */,
+			);
+			path = AnalyzerComponents;
+			sourceTree = "<group>";
+		};
+		7CF2E5302DB519370097E3C6 /* CommonComponents */ = {
+			isa = PBXGroup;
+			children = (
+				7CF2E5312DB5194F0097E3C6 /* DependencyGraph.swift */,
+				7CF2E5332DB519770097E3C6 /* TarjanSCC.swift */,
+				7CF2E5352DB519A40097E3C6 /* CodeParser.swift */,
+				7CF2E5372DB519DD0097E3C6 /* CodeVisitor.swift */,
+			);
+			path = CommonComponents;
+			sourceTree = "<group>";
+		};
+		7CF2E5532DB51C530097E3C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7CF2E5542DB51C5D0097E3C6 /* ViolationView.swift */,
+				7CF2E55D2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7CF2E5582DB57B640097E3C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7CF2E5512DB51B710097E3C6 /* Violation.swift */,
+				7CF2E5562DB51FFF0097E3C6 /* ClassInfo.swift */,
+				7CF2E5592DB57B880097E3C6 /* ArchitectureRules.swift */,
+				7CF2E55B2DB57B960097E3C6 /* ComponentRule.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -292,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				7C4021D52DE33EA500A9D013 /* ProjectScanner.swift in Sources */,
 				7C4022012DEC776100A9D013 /* ViolationRowView.swift in Sources */,
 				7C4021F52DE7901A00A9D013 /* ArchitectureAnalysisService.swift in Sources */,
@@ -304,6 +390,14 @@
 				7C4021FF2DEC765200A9D013 /* ViolationsSection.swift in Sources */,
 				7C4021FB2DE7926500A9D013 /* AppDependencies.swift in Sources */,
 				7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */,
+				7CF2E55A2DB57B880097E3C6 /* ArchitectureRules.swift in Sources */,
+				7CF2E5042DB511EA0097E3C6 /* Analyzer.swift in Sources */,
+				7CF2E5362DB519A40097E3C6 /* CodeParser.swift in Sources */,
+				7C4B011F2DC0885000D2BCD2 /* TestabilityAnalyzer.swift in Sources */,
+				7CF2E5522DB51B710097E3C6 /* Violation.swift in Sources */,
+				7CF2E5552DB51C5D0097E3C6 /* ViolationView.swift in Sources */,
+				7CF2E55E2DB57BD70097E3C6 /* ArchitectureRuleEditorView.swift in Sources */,
+				7CF2E52D2DB519140097E3C6 /* ArchitectureAnalyzer.swift in Sources */,
 				7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */,
 				7C4021DC2DE3419300A9D013 /* AnalyzerEngine.swift in Sources */,
 				7C4021E62DE3474100A9D013 /* UserViewModel.swift in Sources */,
