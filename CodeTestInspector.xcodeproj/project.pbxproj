@@ -27,6 +27,18 @@
 		7C4021FD2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */; };
 		7C4021FF2DEC765200A9D013 /* ViolationsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FE2DEC765200A9D013 /* ViolationsSection.swift */; };
 		7C4022012DEC776100A9D013 /* ViolationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4022002DEC776100A9D013 /* ViolationRowView.swift */; };
+		7CD1C0AE2DECDC0F00B06433 /* AnalysisType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0AD2DECDC0F00B06433 /* AnalysisType.swift */; };
+		7CD1C0B22DECDF0B00B06433 /* MetricsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0B12DECDF0B00B06433 /* MetricsResult.swift */; };
+		7CD1C0B52DECDF3700B06433 /* MetricsAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0B42DECDF3700B06433 /* MetricsAnalysisService.swift */; };
+		7CD1C0B82DECE07400B06433 /* EntityDependencyVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0B72DECE07400B06433 /* EntityDependencyVisitor.swift */; };
+		7CD1C0BA2DECE1F400B06433 /* CyclomaticComplexityVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0B92DECE1F400B06433 /* CyclomaticComplexityVisitor.swift */; };
+		7CD1C0BD2DECE26600B06433 /* MetricsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0BC2DECE26600B06433 /* MetricsViewModel.swift */; };
+		7CD1C0C02DECE29A00B06433 /* MetricsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0BF2DECE29A00B06433 /* MetricsScreen.swift */; };
+		7CD1C0C22DEE26DC00B06433 /* NameCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0C12DEE26DC00B06433 /* NameCollector.swift */; };
+		7CD1C0C52DEE273A00B06433 /* DependencyCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0C42DEE273A00B06433 /* DependencyCollector.swift */; };
+		7CD1C0CA2DEE2E1400B06433 /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0C92DEE2E1400B06433 /* UserPresenter.swift */; };
+		7CD1C0CD2DEE2E3000B06433 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0CC2DEE2E3000B06433 /* UserModel.swift */; };
+		7CD1C0D02DEE2E4700B06433 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0CF2DEE2E4700B06433 /* UsersView.swift */; };
 		7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */; };
 		7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F62DB50C680097E3C6 /* ContentView.swift */; };
 		7CF2E4F92DB50C6A0097E3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */; };
@@ -52,6 +64,18 @@
 		7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalyzerScreen.swift; sourceTree = "<group>"; };
 		7C4021FE2DEC765200A9D013 /* ViolationsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationsSection.swift; sourceTree = "<group>"; };
 		7C4022002DEC776100A9D013 /* ViolationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationRowView.swift; sourceTree = "<group>"; };
+		7CD1C0AD2DECDC0F00B06433 /* AnalysisType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisType.swift; sourceTree = "<group>"; };
+		7CD1C0B12DECDF0B00B06433 /* MetricsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsResult.swift; sourceTree = "<group>"; };
+		7CD1C0B42DECDF3700B06433 /* MetricsAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsAnalysisService.swift; sourceTree = "<group>"; };
+		7CD1C0B72DECE07400B06433 /* EntityDependencyVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDependencyVisitor.swift; sourceTree = "<group>"; };
+		7CD1C0B92DECE1F400B06433 /* CyclomaticComplexityVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclomaticComplexityVisitor.swift; sourceTree = "<group>"; };
+		7CD1C0BC2DECE26600B06433 /* MetricsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsViewModel.swift; sourceTree = "<group>"; };
+		7CD1C0BF2DECE29A00B06433 /* MetricsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsScreen.swift; sourceTree = "<group>"; };
+		7CD1C0C12DEE26DC00B06433 /* NameCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCollector.swift; sourceTree = "<group>"; };
+		7CD1C0C42DEE273A00B06433 /* DependencyCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyCollector.swift; sourceTree = "<group>"; };
+		7CD1C0C92DEE2E1400B06433 /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
+		7CD1C0CC2DEE2E3000B06433 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		7CD1C0CF2DEE2E4700B06433 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		7CF2E4F12DB50C680097E3C6 /* CodeTestInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTestInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTestInspectorApp.swift; sourceTree = "<group>"; };
 		7CF2E4F62DB50C680097E3C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,9 +119,8 @@
 		7C4021DD2DE3470A00A9D013 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
-				7C4021E42DE3473800A9D013 /* ViewModels */,
-				7C4021E12DE3472400A9D013 /* Views */,
-				7C4021DE2DE3471400A9D013 /* Models */,
+				7CD1C0C72DEE2DFB00B06433 /* MVVM-Testing */,
+				7CD1C0C62DEE2DE700B06433 /* MVP-Testing */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -175,6 +198,122 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		7CD1C0AC2DECDBFA00B06433 /* MainComponents */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021FA2DE7926500A9D013 /* AppDependencies.swift */,
+				7CD1C0AD2DECDC0F00B06433 /* AnalysisType.swift */,
+			);
+			path = MainComponents;
+			sourceTree = "<group>";
+		};
+		7CD1C0AF2DECDEF600B06433 /* Metrics */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0C32DEE272B00B06433 /* Collectors */,
+				7CD1C0BE2DECE28B00B06433 /* Views */,
+				7CD1C0BB2DECE25800B06433 /* ViewModel */,
+				7CD1C0B62DECE05D00B06433 /* Visitors */,
+				7CD1C0B32DECDF2F00B06433 /* Helpers */,
+				7CD1C0B02DECDF0200B06433 /* Models */,
+			);
+			path = Metrics;
+			sourceTree = "<group>";
+		};
+		7CD1C0B02DECDF0200B06433 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0B12DECDF0B00B06433 /* MetricsResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7CD1C0B32DECDF2F00B06433 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0B42DECDF3700B06433 /* MetricsAnalysisService.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7CD1C0B62DECE05D00B06433 /* Visitors */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0B72DECE07400B06433 /* EntityDependencyVisitor.swift */,
+				7CD1C0B92DECE1F400B06433 /* CyclomaticComplexityVisitor.swift */,
+			);
+			path = Visitors;
+			sourceTree = "<group>";
+		};
+		7CD1C0BB2DECE25800B06433 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0BC2DECE26600B06433 /* MetricsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7CD1C0BE2DECE28B00B06433 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0BF2DECE29A00B06433 /* MetricsScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7CD1C0C32DEE272B00B06433 /* Collectors */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0C12DEE26DC00B06433 /* NameCollector.swift */,
+				7CD1C0C42DEE273A00B06433 /* DependencyCollector.swift */,
+			);
+			path = Collectors;
+			sourceTree = "<group>";
+		};
+		7CD1C0C62DEE2DE700B06433 /* MVP-Testing */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0CE2DEE2E3A00B06433 /* View */,
+				7CD1C0CB2DEE2E2400B06433 /* Model */,
+				7CD1C0C82DEE2E0800B06433 /* Presenter */,
+			);
+			path = "MVP-Testing";
+			sourceTree = "<group>";
+		};
+		7CD1C0C72DEE2DFB00B06433 /* MVVM-Testing */ = {
+			isa = PBXGroup;
+			children = (
+				7C4021DE2DE3471400A9D013 /* Models */,
+				7C4021E12DE3472400A9D013 /* Views */,
+				7C4021E42DE3473800A9D013 /* ViewModels */,
+			);
+			path = "MVVM-Testing";
+			sourceTree = "<group>";
+		};
+		7CD1C0C82DEE2E0800B06433 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0C92DEE2E1400B06433 /* UserPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7CD1C0CB2DEE2E2400B06433 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0CC2DEE2E3000B06433 /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7CD1C0CE2DEE2E3A00B06433 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7CD1C0CF2DEE2E4700B06433 /* UsersView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7CF2E4E82DB50C680097E3C6 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +333,8 @@
 		7CF2E4F32DB50C680097E3C6 /* CodeTestInspector */ = {
 			isa = PBXGroup;
 			children = (
+				7CD1C0AF2DECDEF600B06433 /* Metrics */,
+				7CD1C0AC2DECDBFA00B06433 /* MainComponents */,
 				7C4021E72DE4280C00A9D013 /* Architecture */,
 				7C4021DD2DE3470A00A9D013 /* Testing */,
 				7C4021D32DE33E8D00A9D013 /* Parser */,
@@ -202,7 +343,6 @@
 				7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */,
 				7CF2E4FD2DB50C6A0097E3C6 /* CodeTestInspector.entitlements */,
 				7CF2E4FA2DB50C6A0097E3C6 /* Preview Content */,
-				7C4021FA2DE7926500A9D013 /* AppDependencies.swift */,
 			);
 			path = CodeTestInspector;
 			sourceTree = "<group>";
@@ -294,20 +434,32 @@
 			files = (
 				7C4021D52DE33EA500A9D013 /* ProjectScanner.swift in Sources */,
 				7C4022012DEC776100A9D013 /* ViolationRowView.swift in Sources */,
+				7CD1C0C22DEE26DC00B06433 /* NameCollector.swift in Sources */,
+				7CD1C0CA2DEE2E1400B06433 /* UserPresenter.swift in Sources */,
 				7C4021F52DE7901A00A9D013 /* ArchitectureAnalysisService.swift in Sources */,
 				7C4021EF2DE42E5F00A9D013 /* RuleEditorView.swift in Sources */,
+				7CD1C0BD2DECE26600B06433 /* MetricsViewModel.swift in Sources */,
 				7C4021DA2DE33FE800A9D013 /* EntitySyntaxWalker.swift in Sources */,
 				7C4021EA2DE42CBC00A9D013 /* DependencyRule.swift in Sources */,
 				7C4021F12DE78BA300A9D013 /* ArchitectureAnalyzerView.swift in Sources */,
 				7C4021D82DE33F8F00A9D013 /* ParsedEntity.swift in Sources */,
+				7CD1C0B22DECDF0B00B06433 /* MetricsResult.swift in Sources */,
+				7CD1C0C02DECE29A00B06433 /* MetricsScreen.swift in Sources */,
+				7CD1C0BA2DECE1F400B06433 /* CyclomaticComplexityVisitor.swift in Sources */,
 				7C4021E32DE3472E00A9D013 /* UserView.swift in Sources */,
 				7C4021FF2DEC765200A9D013 /* ViolationsSection.swift in Sources */,
 				7C4021FB2DE7926500A9D013 /* AppDependencies.swift in Sources */,
+				7CD1C0B82DECE07400B06433 /* EntityDependencyVisitor.swift in Sources */,
 				7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */,
 				7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */,
+				7CD1C0CD2DEE2E3000B06433 /* UserModel.swift in Sources */,
+				7CD1C0AE2DECDC0F00B06433 /* AnalysisType.swift in Sources */,
 				7C4021DC2DE3419300A9D013 /* AnalyzerEngine.swift in Sources */,
+				7CD1C0D02DEE2E4700B06433 /* UsersView.swift in Sources */,
+				7CD1C0B52DECDF3700B06433 /* MetricsAnalysisService.swift in Sources */,
 				7C4021E62DE3474100A9D013 /* UserViewModel.swift in Sources */,
 				7C4021EC2DE42CF300A9D013 /* RuleManager.swift in Sources */,
+				7CD1C0C52DEE273A00B06433 /* DependencyCollector.swift in Sources */,
 				7C4021F32DE78E1C00A9D013 /* ArchitectureViolation.swift in Sources */,
 				7C4021F92DE7919B00A9D013 /* ArchitectureAnalyzerViewModel.swift in Sources */,
 				7C4021FD2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift in Sources */,

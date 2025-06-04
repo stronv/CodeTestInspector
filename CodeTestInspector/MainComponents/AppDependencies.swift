@@ -13,4 +13,9 @@ final class AppDependencies {
         let viewModel = ArchitectureAnalyzerViewModel()
         return ArchitectureAnalyzerScreen(viewModel: viewModel)
     }
+    
+    static func makeMetricsModule() -> some View {
+        let viewModel = MetricsViewModel()
+        return MetricsScreen(viewModel: viewModel)
+    }
 }
