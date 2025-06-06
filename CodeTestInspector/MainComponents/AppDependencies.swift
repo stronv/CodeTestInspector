@@ -18,4 +18,9 @@ final class AppDependencies {
         let viewModel = MetricsViewModel()
         return MetricsScreen(viewModel: viewModel)
     }
+    
+    static func makeCohesionModule() -> some View {
+        let viewModel = CohesionViewModel()
+        return CohesionScreen(viewModel: viewModel)
+    }
 }

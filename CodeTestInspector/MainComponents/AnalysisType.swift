@@ -10,6 +10,7 @@ import Foundation
 enum AnalysisType: String, CaseIterable, Identifiable {
     case architecture = "Архитектура"
     case metrics = "Метрики"
+    case connectivity = "Связанность"
     
     var id: AnalysisType { self }
 }

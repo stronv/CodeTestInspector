@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		7C4021FD2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */; };
 		7C4021FF2DEC765200A9D013 /* ViolationsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4021FE2DEC765200A9D013 /* ViolationsSection.swift */; };
 		7C4022012DEC776100A9D013 /* ViolationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4022002DEC776100A9D013 /* ViolationRowView.swift */; };
+		7CCC35492DF0CF7D00DC0AD7 /* NameCollectorServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC35482DF0CF7D00DC0AD7 /* NameCollectorServiceProtocol.swift */; };
 		7CD1C0AE2DECDC0F00B06433 /* AnalysisType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0AD2DECDC0F00B06433 /* AnalysisType.swift */; };
 		7CD1C0B22DECDF0B00B06433 /* MetricsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0B12DECDF0B00B06433 /* MetricsResult.swift */; };
 		7CD1C0B52DECDF3700B06433 /* MetricsAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0B42DECDF3700B06433 /* MetricsAnalysisService.swift */; };
@@ -64,6 +65,7 @@
 		7C4021FC2DE794A500A9D013 /* ArchitectureAnalyzerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureAnalyzerScreen.swift; sourceTree = "<group>"; };
 		7C4021FE2DEC765200A9D013 /* ViolationsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationsSection.swift; sourceTree = "<group>"; };
 		7C4022002DEC776100A9D013 /* ViolationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationRowView.swift; sourceTree = "<group>"; };
+		7CCC35482DF0CF7D00DC0AD7 /* NameCollectorServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCollectorServiceProtocol.swift; sourceTree = "<group>"; };
 		7CD1C0AD2DECDC0F00B06433 /* AnalysisType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisType.swift; sourceTree = "<group>"; };
 		7CD1C0B12DECDF0B00B06433 /* MetricsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsResult.swift; sourceTree = "<group>"; };
 		7CD1C0B42DECDF3700B06433 /* MetricsAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsAnalysisService.swift; sourceTree = "<group>"; };
@@ -83,6 +85,10 @@
 		7CF2E4FB2DB50C6A0097E3C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7CF2E4FD2DB50C6A0097E3C6 /* CodeTestInspector.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CodeTestInspector.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7CCC352A2DF0C7C400DC0AD7 /* CohesionOfComponents */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CohesionOfComponents; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7CF2E4EE2DB50C680097E3C6 /* Frameworks */ = {
@@ -266,6 +272,7 @@
 			children = (
 				7CD1C0C12DEE26DC00B06433 /* NameCollector.swift */,
 				7CD1C0C42DEE273A00B06433 /* DependencyCollector.swift */,
+				7CCC35482DF0CF7D00DC0AD7 /* NameCollectorServiceProtocol.swift */,
 			);
 			path = Collectors;
 			sourceTree = "<group>";
@@ -333,6 +340,7 @@
 		7CF2E4F32DB50C680097E3C6 /* CodeTestInspector */ = {
 			isa = PBXGroup;
 			children = (
+				7CCC352A2DF0C7C400DC0AD7 /* CohesionOfComponents */,
 				7CD1C0AF2DECDEF600B06433 /* Metrics */,
 				7CD1C0AC2DECDBFA00B06433 /* MainComponents */,
 				7C4021E72DE4280C00A9D013 /* Architecture */,
@@ -369,6 +377,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7CCC352A2DF0C7C400DC0AD7 /* CohesionOfComponents */,
 			);
 			name = CodeTestInspector;
 			packageProductDependencies = (
@@ -448,6 +459,7 @@
 				7CD1C0BA2DECE1F400B06433 /* CyclomaticComplexityVisitor.swift in Sources */,
 				7C4021E32DE3472E00A9D013 /* UserView.swift in Sources */,
 				7C4021FF2DEC765200A9D013 /* ViolationsSection.swift in Sources */,
+				7CCC35492DF0CF7D00DC0AD7 /* NameCollectorServiceProtocol.swift in Sources */,
 				7C4021FB2DE7926500A9D013 /* AppDependencies.swift in Sources */,
 				7CD1C0B82DECE07400B06433 /* EntityDependencyVisitor.swift in Sources */,
 				7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */,
