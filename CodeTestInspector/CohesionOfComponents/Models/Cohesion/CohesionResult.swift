@@ -9,6 +9,8 @@ import Foundation
 
 /// Модель, которая содержит все данные для оценки «сильной связности»
 struct CohesionResult {
-    let sccs: [[String]]        // массив всех сильносвязанных компонент (SCC)
-    let largeSCCs: [[String]]   // отфильтрованные по «сильной» связности (объясню ниже)
+    let sccs: [[String]]
+    let largeSCCs: [[String]]
+    let largeSCCDetails: [DetailedSCC]
+    let suggestions: [CohesionSuggestion]
 }

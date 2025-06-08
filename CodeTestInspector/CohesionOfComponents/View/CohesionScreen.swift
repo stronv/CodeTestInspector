@@ -8,14 +8,11 @@
 import Foundation
 import SwiftUI
 
-import SwiftUI
-
 struct CohesionScreen: View {
     @ObservedObject var viewModel: CohesionViewModel
 
     var body: some View {
         VStack(alignment: .leading) {
-            // Кнопка выбора проекта
             HStack {
                 Button("Выбрать проект") {
                     let panel = NSOpenPanel()
@@ -29,7 +26,7 @@ struct CohesionScreen: View {
                 .buttonStyle(.bordered)
 
                 if let data = viewModel.cohesionData {
-                    Text("Найдены \(data.largeSCCs.count) проблемных компонент(ы)")
+                    Text("Найдено \(data.largeSCCs.count) проблемных компонент(ы). Предложено \(data.refactoringPlans.count) план(ов) рефакторинга.")
                         .foregroundColor(.secondary)
                         .padding(.leading, 8)
                 }
@@ -38,7 +35,6 @@ struct CohesionScreen: View {
 
             Divider()
 
-            // Основная область: если данные ещё не загружены
             if viewModel.cohesionData == nil {
                 VStack {
                     Spacer()
@@ -47,28 +43,27 @@ struct CohesionScreen: View {
                         .italic()
                     Spacer()
                 }
-            } else {
-                // Данные есть — смотрим largeSCCs
-                if let data = viewModel.cohesionData {
-                    // Если нет ни одной «большой» (size>1) SCC, выводим сообщение «нет проблем»
-                    if data.largeSCCs.isEmpty {
-                        VStack {
-                            Spacer()
-                            Text("Проблемных файлов не выявлено — циклических зависимостей нет.")
-                                .foregroundColor(.green)
-                                .italic()
-                            Spacer()
-                        }
-                    } else {
-                        // Есть хотя бы одна проблема — показываем список
-                        List {
-                            Section(header: Text("Сильносвязанные компоненты (size > 1)")) {
+            } else if let data = viewModel.cohesionData {
+                if data.largeSCCs.isEmpty && data.refactoringPlans.isEmpty {
+                    VStack {
+                        Spacer()
+                        Text("Проблемных файлов не выявлено — циклических зависимостей нет. Планов рефакторинга нет.")
+                            .foregroundColor(.green)
+                            .italic()
+                        Spacer()
+                    }
+                } else {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            // Секция сильносвязанных компонент
+                            if !data.largeSCCs.isEmpty {
+                                Text("Сильносвязанные компоненты (size > 1)")
+                                    .font(.headline)
                                 ForEach(Array(data.largeSCCs.enumerated()), id: \.offset) { idx, component in
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text("Компонента #\(idx + 1) (размер \(component.count)):")
-                                            .font(.headline)
+                                            .font(.subheadline).bold()
                                         ForEach(component, id: \.self) { node in
-                                            // Убираем префиксы C: и M: при выводе
                                             if node.hasPrefix("C:") {
                                                 Text("• Класс: \(node.dropFirst(2))")
                                                     .font(.caption)
@@ -85,21 +80,72 @@ struct CohesionScreen: View {
                                 }
                             }
 
-                            // Если есть рекомендации – выводим их тоже
+                            // Секция рекомендаций
                             if !data.suggestions.isEmpty {
-                                Section(header: Text("Рекомендации")) {
-                                    ForEach(Array(data.suggestions.enumerated()), id: \.offset) { idx, sug in
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text("🔧 Рекомендация #\(idx + 1):")
-                                                .bold()
-                                            Text(sug.message)
-                                                .font(.body)
-                                        }
-                                        .padding(.vertical, 4)
+                                Text("Рекомендации")
+                                    .font(.headline)
+                                ForEach(Array(data.suggestions.enumerated()), id: \.offset) { idx, sug in
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("🔧 Рекомендация #\(idx + 1):")
+                                            .font(.subheadline).bold()
+                                        Text(sug.message)
+                                            .font(.body)
                                     }
+                                    .padding(.vertical, 4)
                                 }
                             }
+
+                            // Секция планов рефакторинга
+                            if !data.refactoringPlans.isEmpty {
+                                Text("Планы рефакторинга")
+                                    .font(.headline)
+                                let plansArray = data.refactoringPlans.sorted(by: { $0.key < $1.key })
+                                ForEach(plansArray, id: \.key) { sccIdentifier, plan in
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        if case .extractProtocol = plan.type, let details = plan.protocolDetails {
+                                            Text("🛠️ Извлечь протокол '\(details.name)'")
+                                                .font(.subheadline).bold()
+                                            Text("   • Из класса: \(details.sourceClassName)")
+                                            Text("   • Для зависимого класса: \(details.dependentClassName)")
+                                            Text("   • SCC: \(sccIdentifier)")
+                                                .font(.caption)
+                                                .foregroundColor(.gray)
+
+                                            Button("Применить (preview изменений)") {
+                                                viewModel.applyRefactoringPlan(plan)
+                                            }
+                                            .padding(.top, 5)
+                                        } else {
+                                            Text("Неизвестный план рефакторинга")
+                                        }
+                                    }
+                                    .padding(.vertical, 6)
+                                }
+                            }
+
+                            if !viewModel.codeDiffs.isEmpty {
+                                Divider().padding(.vertical, 8)
+                                Text("Предпросмотр изменений:")
+                                    .font(.headline)
+
+                                ForEach(viewModel.codeDiffs, id: \.filePath) { section in
+                                    Text(section.filePath)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                        .padding(.top, 4)
+
+                                    DiffView(diffLines: section.lines)
+                                        .frame(maxHeight: 200)
+                                }
+
+                                Button("Сохранить изменения") {
+                                    viewModel.saveRefactoringChanges()
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .padding(.top, 8)
+                            }
                         }
+                        .padding(.horizontal)
                     }
                 }
             }
@@ -107,6 +153,6 @@ struct CohesionScreen: View {
             Spacer()
         }
         .padding(20)
-        .frame(minWidth: 800, minHeight: 500)
+        .frame(minWidth: 800, minHeight: 600)
     }
 }

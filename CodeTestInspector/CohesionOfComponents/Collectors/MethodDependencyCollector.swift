@@ -8,20 +8,22 @@
 import Foundation
 import SwiftSyntax
 
+/// Собирает зависимости на уровне методов внутри конкретного класса.
 final class MethodDependencyCollector: SyntaxVisitor {
     private let filePath: String
     private let parentEntityName: String
     private var currentMethod: String?
-    private var stack: [String] = []
     var entities: [MethodDependencyEntity] = []
-    
+
     init(filePath: String, parentEntityName: String) {
         self.filePath = filePath
         self.parentEntityName = parentEntityName
         super.init(viewMode: .all)
     }
-    
+
+    // MARK: — Когда входим в FunctionDeclSyntax (метод), сбрасываем текущий метод
     override func visit(_ node: FunctionDeclSyntax) -> SyntaxVisitorContinueKind {
+        // Составляем имя метода вида "B.bar()"
         let methodName = "\(parentEntityName).\(node.name.text)()"
         entities.append(.init(
             parentEntityName: parentEntityName,
@@ -32,38 +34,49 @@ final class MethodDependencyCollector: SyntaxVisitor {
         currentMethod = methodName
         return .visitChildren
     }
-    
+
     override func visitPost(_ node: FunctionDeclSyntax) {
         currentMethod = nil
     }
-    
-    /// Когда видим MemberAccessExprSyntax, например: `other.someMethod()`
+
+    // MARK: — Когда видим вызов вида `something.bar()`
     override func visit(_ node: MemberAccessExprSyntax) -> SyntaxVisitorContinueKind {
-        guard let origin = currentMethod else { return .skipChildren }
-        // node.name — имя вызываемого метода (String)
-        let calledMethod = node.declName.baseName.text + "()"
-        // Чтобы узнать, к какому классу/структуре относится «other», нам нужна информация о type of base expr.
-        // На данном этапе мы упростим: будем считать, что если `other` — это локальная переменная класса X,
-        // мы не сможем достоверно узнать X. Но если `other` — это имя класса (static) или self,
-        // мы можем подставить parentEntityName или игнорировать.
-        // Для простоты пока будем сохранять зависимость только в формате "?.\(calledMethod)".
-        let dependency = calledMethod // или, при более сложном анализе, "SomeClass.\(calledMethod)"
+        guard let origin = currentMethod else {
+            return .skipChildren
+        }
+        // Имя вызываемого метода, например "bar()"
+        let calledMethodName = node.declName.baseName.text + "()"
+
+        // Попытаемся понять, к какому классу относится `node.base`
+        // Если base — это идентификатор, совпадающий с именем класса (например, B), берем "B.bar()".
+        var dependencyKey: String
+        if let baseIdent = node.base?.as(DeclReferenceExprSyntax.self)?.baseName.text,
+           baseIdent == parentEntityName {
+            dependencyKey = "\(parentEntityName).\(calledMethodName)"
+        } else {
+            dependencyKey = "\(parentEntityName).\(calledMethodName)"
+        }
+
+        // Добавляем в зависимости для текущего метода
         if let idx = entities.firstIndex(where: { $0.methodName == origin }) {
-            entities[idx].dependencies.insert(dependency)
+            entities[idx].dependencies.insert(dependencyKey)
         }
         return .visitChildren
     }
-    
+
+    // MARK: — Если просто FunctionCall без области видимости, тоже считаем, что метод из текущего класса
     override func visit(_ node: FunctionCallExprSyntax) -> SyntaxVisitorContinueKind {
-        guard let origin = currentMethod else { return .skipChildren }
-        // Node может быть "someMethod()" без области видимости.
-        // В этом случае node.calledExpression.as(IdentifierExprSyntax.self)?.identifier.text даст имя функции.
+        guard let origin = currentMethod else {
+            return .skipChildren
+        }
         if let ident = node.calledExpression.as(DeclReferenceExprSyntax.self)?.baseName.text {
-            let calledMethod = "\(ident)()"
+            // Напрямую вызывают bar(), создание экземпляров и т.п.
+            let called = "\(ident)()"
+            let dependencyKey = "\(parentEntityName).\(called)"
             if let idx = entities.firstIndex(where: { $0.methodName == origin }) {
-                entities[idx].dependencies.insert(calledMethod)
+                entities[idx].dependencies.insert(dependencyKey)
             }
         }
         return .visitChildren
-    } 
+    }
 }

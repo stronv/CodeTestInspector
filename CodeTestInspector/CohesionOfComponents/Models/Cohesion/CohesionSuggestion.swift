@@ -8,6 +8,7 @@
 import Foundation
 
 struct CohesionSuggestion {
-    let component: [String]     // один SCC, например ["C:UserA", "C:UserB", "M:UserA.doSomething()", ...]
-    let message: String         // рекомендация, например: "Классы A и B сильно связаны. Рассмотрите возможность вынести интерфейс X"
+    let component: [String]
+    let message: String
+    let involvedDependencies: [(source: String, destination: String)]?
 }

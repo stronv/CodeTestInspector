@@ -8,7 +8,8 @@
 import Foundation
 
 struct CohesionViewData {
-    let allSCCs: [[String]]     // все SCC (можем отображать в виде списка или дерева)
+    let allSCCs: [[String]]
     let largeSCCs: [[String]]
     let suggestions: [CohesionSuggestion]
+    let refactoringPlans: [String: RefactoringPlan]
 }

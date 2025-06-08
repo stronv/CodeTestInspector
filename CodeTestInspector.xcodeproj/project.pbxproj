@@ -40,6 +40,9 @@
 		7CD1C0CA2DEE2E1400B06433 /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0C92DEE2E1400B06433 /* UserPresenter.swift */; };
 		7CD1C0CD2DEE2E3000B06433 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0CC2DEE2E3000B06433 /* UserModel.swift */; };
 		7CD1C0D02DEE2E4700B06433 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD1C0CF2DEE2E4700B06433 /* UsersView.swift */; };
+		7CEFC1172DF31CB3002D0D39 /* SwiftSyntaxBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = 7CEFC1162DF31CB3002D0D39 /* SwiftSyntaxBuilder */; };
+		7CEFC12C2DF34D3E002D0D39 /* B.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEFC12A2DF34D3E002D0D39 /* B.swift */; };
+		7CEFC12D2DF34D3E002D0D39 /* A.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEFC1292DF34D3E002D0D39 /* A.swift */; };
 		7CF2E4F52DB50C680097E3C6 /* CodeTestInspectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */; };
 		7CF2E4F72DB50C680097E3C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F62DB50C680097E3C6 /* ContentView.swift */; };
 		7CF2E4F92DB50C6A0097E3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF2E4F82DB50C6A0097E3C6 /* Assets.xcassets */; };
@@ -78,6 +81,8 @@
 		7CD1C0C92DEE2E1400B06433 /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
 		7CD1C0CC2DEE2E3000B06433 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7CD1C0CF2DEE2E4700B06433 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		7CEFC1292DF34D3E002D0D39 /* A.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.swift; sourceTree = "<group>"; };
+		7CEFC12A2DF34D3E002D0D39 /* B.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B.swift; sourceTree = "<group>"; };
 		7CF2E4F12DB50C680097E3C6 /* CodeTestInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTestInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF2E4F42DB50C680097E3C6 /* CodeTestInspectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTestInspectorApp.swift; sourceTree = "<group>"; };
 		7CF2E4F62DB50C680097E3C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C4021D02DE3361F00A9D013 /* SwiftParser in Frameworks */,
+				7CEFC1172DF31CB3002D0D39 /* SwiftSyntaxBuilder in Frameworks */,
 				7C4021D22DE3361F00A9D013 /* SwiftSyntax in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,6 +131,7 @@
 		7C4021DD2DE3470A00A9D013 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				7CEFC12B2DF34D3E002D0D39 /* CohesionCalculating */,
 				7CD1C0C72DEE2DFB00B06433 /* MVVM-Testing */,
 				7CD1C0C62DEE2DE700B06433 /* MVP-Testing */,
 			);
@@ -321,6 +328,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7CEFC12B2DF34D3E002D0D39 /* CohesionCalculating */ = {
+			isa = PBXGroup;
+			children = (
+				7CEFC1292DF34D3E002D0D39 /* A.swift */,
+				7CEFC12A2DF34D3E002D0D39 /* B.swift */,
+			);
+			path = CohesionCalculating;
+			sourceTree = "<group>";
+		};
 		7CF2E4E82DB50C680097E3C6 = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +401,7 @@
 			packageProductDependencies = (
 				7C4021CF2DE3361F00A9D013 /* SwiftParser */,
 				7C4021D12DE3361F00A9D013 /* SwiftSyntax */,
+				7CEFC1162DF31CB3002D0D39 /* SwiftSyntaxBuilder */,
 			);
 			productName = CodeTestInspector;
 			productReference = 7CF2E4F12DB50C680097E3C6 /* CodeTestInspector.app */;
@@ -451,6 +468,8 @@
 				7C4021EF2DE42E5F00A9D013 /* RuleEditorView.swift in Sources */,
 				7CD1C0BD2DECE26600B06433 /* MetricsViewModel.swift in Sources */,
 				7C4021DA2DE33FE800A9D013 /* EntitySyntaxWalker.swift in Sources */,
+				7CEFC12C2DF34D3E002D0D39 /* B.swift in Sources */,
+				7CEFC12D2DF34D3E002D0D39 /* A.swift in Sources */,
 				7C4021EA2DE42CBC00A9D013 /* DependencyRule.swift in Sources */,
 				7C4021F12DE78BA300A9D013 /* ArchitectureAnalyzerView.swift in Sources */,
 				7C4021D82DE33F8F00A9D013 /* ParsedEntity.swift in Sources */,
@@ -698,6 +717,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7C4021CE2DE3361F00A9D013 /* XCRemoteSwiftPackageReference "swift-syntax" */;
 			productName = SwiftSyntax;
+		};
+		7CEFC1162DF31CB3002D0D39 /* SwiftSyntaxBuilder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C4021CE2DE3361F00A9D013 /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftSyntaxBuilder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
